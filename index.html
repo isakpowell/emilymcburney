@@ -70,10 +70,52 @@
   @media screen and (max-width:991px) {
    body { font-size: 0.875em; }
   }
-  
+
   .main-container {
     max-width: 94.5em;
   }
+
+  /* Footer */
+  footer.footer {
+    height: auto !important;
+    width: 100% !important;
+    position: relative !important;
+  }
+  .nav-link-container.footer {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center;
+    gap: 1em;
+    padding-top: 3em !important;
+    padding-bottom: 3em !important;
+  }
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25em 1.5em;
+  }
+  .footer-text-primary.secondary {
+    margin-top: 1em;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1.5em;
+    width: 100%;
+  }
+
+  @media screen and (max-width: 767px) {
+    .nav-link-container.footer {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+    .footer-text-primary {
+      font-size: 0.85em;
+    }
+    .footer-text-primary.secondary {
+      font-size: 0.75em;
+    }
+  }
+
       </style>
     </div>
     <div class="cursor-wrapper">
@@ -544,7 +586,7 @@ a {
           <div data-w-id="2339eaf8-4867-eaf3-dc92-4a951590835f" class="cta-banner__content-wrapper">
             <div class="heading-4"><em class="italic-text-3">Contact</em>Me
             </div>
-            <p class="paragraph">Thank you for checking out my portfolio. My CV&nbsp;and work experience can be viewed<a href="https://cdn.prod.website-files.com/637769a965ea18cb58b70c11/65c212a7392218ad4707007c_Resume_EmilyMcBurney.pdf" data-w-id="a55ce380-1985-2c28-c62e-db6366b41410" target="_blank" class="resume">here</a>.
+            <p class="paragraph">Thank you for checking out my portfolio. My CV&nbsp;and work experience can be viewed <a href="https://cdn.prod.website-files.com/637769a965ea18cb58b70c11/65c212a7392218ad4707007c_Resume_EmilyMcBurney.pdf" data-w-id="a55ce380-1985-2c28-c62e-db6366b41410" target="_blank" class="resume">here</a>.
             </p>
             <div class="form-block w-form">
               <form id="email-form" name="email-form" data-name="Email Form" method="get" class="form" data-wf-page-id="647706a79dcf824017a431e2" data-wf-element-id="2339eaf8-4867-eaf3-dc92-4a9515908367" aria-label="Email Form">
@@ -588,7 +630,7 @@ a {
             <img src="./Emily McBurney_ Work_files/63ca1ffcf8d2ff6d1b8dcfaf_LinkedIn.svg" loading="lazy" width="32" alt="View LinkedIn" class="image-5"></a><a href="https://www.instagram.com/life_to_ink/" target="_blank" class="w-inline-block">
             <img src="./Emily McBurney_ Work_files/63ca1ffcf8d2ff69b28dcfb0_Instagram.svg" loading="lazy" width="33" data-w-id="4daaa8f2-0289-a2ad-98e7-c57880576883" alt="View Instagram" class="image-5"></a>
           </div>
-          <div class="footer-text-primary secondary">Designed with ❤️ and built on <em>Webflow</em>by Emily McBurney with special credit to Isak Powell
+          <div class="footer-text-primary secondary">Designed with ❤️ and built on <em>Webflow</em> by Emily McBurney with special credit to Isak Powell
           </div>
         </div>
       </footer>

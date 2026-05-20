@@ -50,8 +50,8 @@
 
     .logo {
       position: fixed;
-      top: 50px;
-      left: 8.8em;
+      top: clamp(1rem, 4vw, 50px);
+      left: clamp(1.5rem, 8.8em, 10vw);
       text-decoration: none;
       color: #fff;
       line-height: 0;
@@ -69,37 +69,54 @@
       display: block;
     }
 
-    .back-link {
-      position: fixed;
-      top: 2.1rem;
-      right: 2.5rem;
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6em;
+      margin-top: 3rem;
+      padding: 0.75em 1.75em;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 100px;
+      font-family: 'Poppins', sans-serif;
       font-size: 0.75rem;
-      letter-spacing: 0.12em;
+      font-weight: 300;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
+      color: #fff;
       text-decoration: none;
-      transition: color 0.2s;
+      backdrop-filter: blur(8px);
+      background: rgba(255,255,255,0.08);
+      transition: background 0.25s, border-color 0.25s;
       opacity: 0;
-      animation: fadeIn 0.8s ease 0.4s forwards;
+      animation: fadeIn 0.8s ease 0.85s forwards;
     }
-    .back-link:hover { color: #fff; }
+    .back-btn:hover {
+      background: rgba(255,255,255,0.18);
+      border-color: rgba(255,255,255,0.7);
+    }
+    .back-btn svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
 
     .content {
       text-align: center;
       padding: 2rem;
-      overflow: hidden;
     }
 
     /* Clip each line so it slides up into view */
     .line-wrap {
       overflow: hidden;
       display: block;
+      padding-bottom: 0.15em;
+      margin-bottom: -0.15em;
     }
 
     h1 {
       font-family: 'Italiana', sans-serif;
       font-weight: 400;
-      font-size: 180px;
+      font-size: clamp(3rem, 15vw, 180px);
       line-height: 1.05;
       letter-spacing: -0.01em;
     }
@@ -167,10 +184,15 @@
       <span class="line-wrap"><span class="l1">Projects</span></span>
       <span class="line-wrap"><span class="l2">coming soon</span></span>
     </h1>
+    <a href="index.html" class="back-btn">
+      <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 7H2M2 7L6.5 2.5M2 7L6.5 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Back to portfolio
+    </a>
   </div>
 
   <div class="scroll-indicator">
-    <span class="scroll-text">Back to portfolio</span>
     <div class="scroll-line-wrap"><div class="scroll-line-inner"></div></div>
   </div>
 </body>
