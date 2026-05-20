@@ -10,8 +10,33 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    @keyframes gradientShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translate3d(0, 60px, 0); }
+      to   { opacity: 1; transform: translate3d(0, 0, 0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes scrollLine {
+      0%   { transform: translateY(0%);   opacity: 1; }
+      60%  { transform: translateY(100%); opacity: 0; }
+      61%  { transform: translateY(-100%); opacity: 0; }
+      100% { transform: translateY(0%);   opacity: 1; }
+    }
+
     body {
-      background: linear-gradient(135deg, #000000 0%, #1a0030 20%, #3d0d6e 50%, #7b1fa2 75%, #c2185b 100%);
+      background: linear-gradient(135deg, #000000, #1a0030, #3d0d6e, #7b1fa2, #c2185b, #1a0030, #000000);
+      background-size: 400% 400%;
+      animation: gradientShift 12s ease infinite;
       color: #fff;
       font-family: 'Poppins', sans-serif;
       font-weight: 300;
@@ -20,6 +45,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
     }
 
     .logo {
@@ -34,6 +60,8 @@
       padding: 11px 10px 10px;
       border-radius: 90px;
       overflow: visible;
+      opacity: 0;
+      animation: fadeIn 0.8s ease 0.2s forwards;
     }
     .logo svg {
       width: 50px;
@@ -48,23 +76,24 @@
       font-size: 0.75rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #888;
+      color: rgba(255,255,255,0.5);
       text-decoration: none;
       transition: color 0.2s;
+      opacity: 0;
+      animation: fadeIn 0.8s ease 0.4s forwards;
     }
     .back-link:hover { color: #fff; }
 
     .content {
       text-align: center;
       padding: 2rem;
+      overflow: hidden;
     }
 
-    .label {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #555;
-      margin-bottom: 2rem;
+    /* Clip each line so it slides up into view */
+    .line-wrap {
+      overflow: hidden;
+      display: block;
     }
 
     h1 {
@@ -75,16 +104,52 @@
       letter-spacing: -0.01em;
     }
 
-    h1 em {
-      font-style: italic;
-      color: #888;
+    h1 .l1 {
+      display: block;
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+      animation: fadeSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    }
+    h1 .l2 {
+      display: block;
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+      animation: fadeSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards;
     }
 
-    .sub {
-      margin-top: 2rem;
-      font-size: 0.85rem;
-      letter-spacing: 0.06em;
-      color: #555;
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: fixed;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fadeIn 1s ease 1.2s forwards;
+    }
+    .scroll-text {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+    .scroll-line-wrap {
+      width: 1px;
+      height: 50px;
+      background: rgba(255,255,255,0.15);
+      overflow: hidden;
+      position: relative;
+    }
+    .scroll-line-inner {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.7);
+      animation: scrollLine 2s ease-in-out 1.5s infinite;
     }
   </style>
 </head>
@@ -98,7 +163,15 @@
   </a>
 
   <div class="content">
-    <h1>Projects<br>coming soon</h1>
+    <h1>
+      <span class="line-wrap"><span class="l1">Projects</span></span>
+      <span class="line-wrap"><span class="l2">coming soon</span></span>
+    </h1>
+  </div>
+
+  <div class="scroll-indicator">
+    <span class="scroll-text">Back to portfolio</span>
+    <div class="scroll-line-wrap"><div class="scroll-line-inner"></div></div>
   </div>
 </body>
 </html>
